@@ -19,12 +19,22 @@ def test_ejemplo_catedra_5():
 def test_ejemplo_catedra_6():
     assert obtener_suma_ponderada(obtener_datos('./archivos_pruebas_tp1/10000.txt')) == 7245315862869
 
-def ejemplo_grupo_tp_1():
+def test_ejemplo_catedra_7():
     assert obtener_suma_ponderada(obtener_datos('./archivos_pruebas_tp1/100000.txt')) == 728684685661017
 
-def ejemplo_grupo_tp_2():
-    assert obtener_suma_ponderada(obtener_datos('./archivos_pruebas_tp1/100000.txt')) == 728684685661017
+def test_grupo_1():
+    # Todos con el mismo peso deberia ejecutarse las de menor duracion al principio
+    batallas = [(3, 1), (2, 1), (4, 1)] 
+    assert obtener_suma_ponderada(batallas) == 16
 
-def ejemplo_grupo_tp_3():
-    assert obtener_suma_ponderada(obtener_datos('./archivos_pruebas_tp1/100000.txt')) == 728684685661017
+def test_grupo_2():
+    # Al tener distintos pesos ahora usamos la relacion de peso/tiempo. En caso de igualdad da lo mismo cual se ejecuta
+    batallas = [(3, 3), (2, 1), (4, 2)] 
+    assert obtener_suma_ponderada(batallas) == 32
+
+def test_grupo_3():
+    # En este caso el orden de las batallas seran: b2,b3,b1
+    batallas = [(5, 1), (3, 5), (4, 3)] 
+    assert obtener_suma_ponderada(batallas) == 48
+    
 
