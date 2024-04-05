@@ -1,4 +1,4 @@
-import os
+import sys
 import csv
 import time
 from tp1_greedy import *
@@ -18,26 +18,23 @@ def obtener_datos(ruta):
     return datos 
 
 def main():
-    # Obtener la ruta de los datos de las batallas
-    ruta_directorio = os.getcwd()
+    path = sys.argv[1]
+    
+    # Obtener las batallas del archivo
+    datos_batallas = obtener_datos(path)
+    
+    print("---------------------------------------------------------------")
+    print(f"Iniciando cálculo de la suma ponderada para el archivo {path}")
 
-    for archivo in ARCHIVOS_DE_PRUEBA:
-        ruta_datos = ruta_directorio + archivo
+    inicio_tiempo = time.time()  # Iniciar medición de tiempo
 
-        datos_batallas = obtener_datos(ruta_datos)
-        
-        print("---------------------------------------------------------------")
-        print(f"Iniciando cálculo de la suma ponderada para el archivo {archivo}")
+    suma_ponderada = obtener_suma_ponderada(datos_batallas)
 
-        inicio_tiempo = time.time()  # Iniciar medición de tiempo
+    fin_tiempo = time.time()  # Finalizar medición de tiempo
+    tiempo_total = fin_tiempo - inicio_tiempo  # Calcular tiempo total
 
-        suma_ponderada = obtener_suma_ponderada(datos_batallas)
-
-        fin_tiempo = time.time()  # Finalizar medición de tiempo
-        tiempo_total = fin_tiempo - inicio_tiempo  # Calcular tiempo total
-
-        print(f"La suma ponderada de las batallas es: {suma_ponderada}")
-        print(f"Tiempo de ejecución: {tiempo_total} segundos")
+    print(f"La suma ponderada de las batallas es: {suma_ponderada}")
+    print(f"Tiempo de ejecución: {tiempo_total} segundos")
 
 
 if __name__ == "__main__":
