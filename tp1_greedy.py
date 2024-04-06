@@ -1,16 +1,17 @@
-
+def obtener_ratio_batalla(batalla):
+    tiempo_batalla, peso_batalla = batalla
+    return peso_batalla / tiempo_batalla
 
 def obtener_suma_ponderada(batallas):
-    
-    #Ordeno las batallas según relación entre su valor y el tiempo que tardan
-    batallas_ordenadas =  sorted(batallas, key=lambda x: x[1]/x[0],reverse=True)
+    regla = lambda batalla: obtener_ratio_batalla(batalla)
+    batallas_ordenadas = sorted(batallas, key=regla, reverse=True)
     
     suma_ponderada = 0
     suma_parcial = 0
     
     for batalla in batallas_ordenadas:
-        suma_parcial += batalla[0]
-        suma_ponderada += suma_parcial*batalla[1]
+        tiempo_batalla,peso_batalla = batalla
+        suma_parcial += tiempo_batalla
+        suma_ponderada += suma_parcial*peso_batalla
 
     return suma_ponderada
-
