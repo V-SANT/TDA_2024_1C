@@ -40,7 +40,7 @@ def test_grupo_3():
     assert obtener_batallas_ordenadas(batallas) == [(3, 5), (4, 3), (5, 1)]
     assert obtener_suma_ponderada(batallas) == 48
 
-def test_grupo_4():
+def test_criterio_por_tiempo_como_peor_solucion():
     batallas = [(2, 5), (3, 9), (4, 11)] 
     assert obtener_batallas_ordenadas(batallas) == [(3, 9), (4, 11), (2, 5)]
     assert obtener_suma_ponderada(batallas) == 149
@@ -51,7 +51,7 @@ def test_grupo_4():
     assert obtener_batallas_ordenadas_por_tiempo(batallas) == [(2, 5), (3, 9), (4, 11)]
     assert obtener_suma_ponderada_por_tiempo(batallas) == 154
 
-def test_grupo_5():
+def test_criterio_por_peso_como_peor_solucion():
     batallas = [(5, 2), (9, 3), (11, 4)]  
     assert obtener_suma_ponderada(batallas) == 149
     assert obtener_batallas_ordenadas(batallas) == [(5, 2), (11, 4), (9, 3)]
@@ -61,5 +61,36 @@ def test_grupo_5():
     
     assert obtener_suma_ponderada_por_tiempo(batallas) == 152
     assert obtener_batallas_ordenadas_por_tiempo(batallas) == [(5, 2), (9, 3), (11, 4)]
-    
 
+def test_solucion_optima_usando_criterio_por_peso():
+    batallas = [(2, 5), (3, 8), (4, 11)] 
+    assert obtener_batallas_ordenadas(batallas) == [(4, 11), (3, 8), (2, 5)]
+    assert obtener_suma_ponderada(batallas) == 145
+
+    assert obtener_batallas_ordenadas_por_peso(batallas) == [(4, 11), (3, 8), (2, 5)]
+    assert obtener_suma_ponderada_por_peso(batallas) == 145
+    
+    assert obtener_batallas_ordenadas_por_tiempo(batallas) == [(2, 5), (3, 8), (4, 11)]
+    assert obtener_suma_ponderada_por_tiempo(batallas) == 149
+
+def test_solucion_optima_usando_criterio_por_tiempo():
+    batallas = [(5, 2), (8, 3), (11, 4)]  
+    assert obtener_suma_ponderada(batallas) == 145
+    assert obtener_batallas_ordenadas(batallas) == [(5, 2), (8, 3), (11, 4)]
+
+    assert obtener_suma_ponderada_por_peso(batallas) == 149
+    assert obtener_batallas_ordenadas_por_peso(batallas) == [(11, 4), (8, 3), (5, 2)]
+    
+    assert obtener_suma_ponderada_por_tiempo(batallas) == 145
+    assert obtener_batallas_ordenadas_por_tiempo(batallas) == [(5, 2), (8, 3), (11, 4)]
+
+def test_solucion_optima_en_todos_los_criterios():
+    batallas = [(2, 3), (1, 4), (2, 2)]  
+    assert obtener_suma_ponderada(batallas) == 23
+    assert obtener_batallas_ordenadas(batallas) == [(1, 4), (2, 3), (2, 2)]
+
+    assert obtener_suma_ponderada_por_peso(batallas) == 23
+    assert obtener_batallas_ordenadas_por_peso(batallas) == [(1, 4), (2, 3), (2, 2)]
+    
+    assert obtener_suma_ponderada_por_tiempo(batallas) == 23
+    assert obtener_batallas_ordenadas_por_tiempo(batallas) == [(1, 4), (2, 3), (2, 2)]
