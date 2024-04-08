@@ -36,6 +36,10 @@ def main():
     print(f"La suma ponderada de las batallas es: {suma_ponderada}")
     print(f"Tiempo de ejecución: {tiempo_total} segundos")
 
+    # Escribir el orden de las batallas en un archivo
+    with open("orden_batallas.txt", "w") as archivo:
+        for batalla in obtener_batallas_ordenadas(datos_batallas):
+            archivo.write(f"{batalla}\n")
 
 if __name__ == "__main__":
     main()

@@ -17,6 +17,8 @@ Y luego ejecutar lo siguiente
 python main.py <<path>>
 ```
 
+Para mejor entendimiento, el orden en el que se ejecutan las batallas es guardado en un archivo llamado `orden_batallas.txt` el cual se puede consultar una vez ejecutado el programa
+
 ## Tests
 Para correr los tests es necesario contar con `pytest` y luego ejecutar sobre el directorio del proyecto: 
 
