@@ -1,4 +1,5 @@
 DIRECTORIO_DATOS = '/archivos_pruebas/'
+RESULTADOS_ESPERADOS = 'Resultados Esperados.txt'
 
 ARCHIVOS_DE_PRUEBA = [
     '5.txt',
@@ -12,3 +13,10 @@ ARCHIVOS_DE_PRUEBA = [
     '1000.txt',
     '5000.txt',
 ]
+
+ARCHIVOS_5 = ['5.txt']
+
+CARGAR = 'Cargar'
+ATACAR = 'Atacar'
+
+PATRON = r"(\d+_?\w*\.txt)\nEstrategia: (.+)\nCantidad de tropas eliminadas: (\d+)"
