@@ -45,5 +45,21 @@ def ataques_optimos(n, arribos, valores_recarga):
             
             ataques = [CARGAR] + ataques
 
+    if optimos[-1] != calcular_enemigos_eliminados(arribos[1:], valores_recarga[1:], ataques):
+        raise ValueError("La secuencia generada no coincida con la cantidad de enemigos optima")
+
     return optimos[-1],ataques
 
+def calcular_enemigos_eliminados(arribos, valores_recarga, secuencia_acciones):
+    ganancia = 0
+    energia_acumulada = 0
+
+    for accion, arribo in zip(secuencia_acciones, arribos):
+        if accion == 'Cargar':
+            energia_acumulada += 1
+        elif accion == 'Atacar':
+            enemigos_eliminados = min(arribo, valores_recarga[energia_acumulada])
+            ganancia += enemigos_eliminados
+            energia_acumulada = 0
+
+    return ganancia

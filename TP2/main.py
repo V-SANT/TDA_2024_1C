@@ -1,14 +1,9 @@
 import os
 import csv
+import sys
 import re
 from constantes_tp2 import *
 from ataques_optimos import ataques_optimos
-
-def obtener_rutas_archivos():
-    directorio_actual = os.getcwd()
-    directorio_datos = os.path.join(directorio_actual, DIRECTORIO_DATOS)
-    resultados_esperados = os.path.join(directorio_datos, RESULTADOS_ESPERADOS)
-    return directorio_datos, resultados_esperados
 
 def leer_archivo_prueba(ruta):
     with open(ruta) as file:
@@ -17,6 +12,13 @@ def leer_archivo_prueba(ruta):
         arribos = [int(file.readline()) for _ in range(n)]
         valores_recarga = [int(file.readline()) for _ in range(n)]
         return n, arribos, valores_recarga
+
+# ---------------- Inicio de funciones sin uso ---------------- #
+def obtener_rutas_archivos():
+    directorio_actual = os.getcwd()
+    directorio_datos = os.path.join(directorio_actual, DIRECTORIO_DATOS)
+    resultados_esperados = os.path.join(directorio_datos, RESULTADOS_ESPERADOS)
+    return directorio_datos, resultados_esperados
 
 def leer_resultados_esperados(ruta):
     resultados_esperados = {}
@@ -48,25 +50,15 @@ def comparar_resultados(resultados_obtenidos, resultados_esperados):
             print("╔═════════════════════════════════════╗")
             print("║              \o/ ¡Éxito!             ║")
             print("╚═════════════════════════════════════╝\n")
-
+# ---------------- Fin de funciones sin uso ---------------- #
 
 def main():
-    directorio_datos, ruta_resultados_esperados = obtener_rutas_archivos()
-    resultados_obtenidos = {}
-
-    for archivo in ARCHIVOS_DE_PRUEBA:
-        ruta_archivo = os.path.join(directorio_datos, archivo)
-        ruta_archivo_completa = os.getcwd() + "/" + ruta_archivo
-        n, arribos, valores_recarga = leer_archivo_prueba(ruta_archivo_completa)
-        resultado = ataques_optimos(n, arribos, valores_recarga)
-        resultados_obtenidos[archivo] = resultado
-
-    ruta_resultados_esperados_completa = os.getcwd() + ruta_resultados_esperados
-    print(ruta_resultados_esperados_completa)
-
-    resultados_esperados = leer_resultados_esperados(ruta_resultados_esperados_completa)
-
-    comparar_resultados(resultados_obtenidos, resultados_esperados)
+    ruta_archivo = sys.argv[1]
+    n, arribos, valores_recarga = leer_archivo_prueba(ruta_archivo)
+    resultado = ataques_optimos(n, arribos, valores_recarga)
+    print(f"Cantidad de enemigos eliminados: {resultado[0]}")
+    print(f"Estrategia seguida: {resultado[1]}")
+    
 
 if __name__ == "__main__":
     main()
