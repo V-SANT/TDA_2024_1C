@@ -20,18 +20,6 @@ def obtener_rutas_archivos():
     resultados_esperados = os.path.join(directorio_datos, RESULTADOS_ESPERADOS)
     return directorio_datos, resultados_esperados
 
-def leer_resultados_esperados(ruta):
-    resultados_esperados = {}
-    with open(ruta) as file:
-        contenido = file.read()
-        matches = re.findall(PATRON, contenido)
-        for match in matches:
-            archivo = match[0]
-            estrategia = [e.strip() for e in match[1].split(",")]
-            cantidad = int(match[2])
-            resultados_esperados[archivo] = (cantidad, estrategia)
-    return resultados_esperados
-
 def comparar_resultados(resultados_obtenidos, resultados_esperados):
     for archivo, resultado_obtenido in resultados_obtenidos.items():
         resultado_esperado = resultados_esperados.get(archivo)
@@ -51,6 +39,18 @@ def comparar_resultados(resultados_obtenidos, resultados_esperados):
             print("║              \o/ ¡Éxito!             ║")
             print("╚═════════════════════════════════════╝\n")
 # ---------------- Fin de funciones sin uso ---------------- #
+
+def leer_resultados_esperados(ruta):
+    resultados_esperados = {}
+    with open(ruta) as file:
+        contenido = file.read()
+        matches = re.findall(PATRON, contenido)
+        for match in matches:
+            archivo = match[0]
+            estrategia = [e.strip() for e in match[1].split(",")]
+            cantidad = int(match[2])
+            resultados_esperados[archivo] = (cantidad, estrategia)
+    return resultados_esperados
 
 def main():
     ruta_archivo = sys.argv[1]
