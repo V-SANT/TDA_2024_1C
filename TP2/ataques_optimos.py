@@ -1,61 +1,80 @@
 from constantes_tp2 import *
 
-def ataques_optimos(n, arribos, valores_recarga):
-    if n == 0:
-        return 0,[]
+def obtener_valores_optimos_ataque(x, e):
+
+    if len(x) != len(e):
+        raise ListasIncompatiblesError()
     
-    optimos = [0] * (n+1)
-    arribos = [0] + arribos
-    valores_recarga = [0] + valores_recarga
+    n = len(x)
+    
+    opt = [0] * (n+1)
+    x = [0] + x
+    e = [0] + e
 
-    for j in range(1,n+1):
-        optimo_j = 0
-        #print(f"Valor de j:{j}")
-        for k in range(0,j):
-            #print(f"Valor de k: {k}")
-            #print(f"    OPT({k}) + MIN(e_{k-j},x_{j}) = {optimos[k]} + min({valores_recarga[(j-k)]},{arribos[(j)]})")
-            optimo_parcial = optimos[k] + min((valores_recarga[(j-k)],arribos[(j)]))
-            if optimo_parcial > optimo_j:
-                optimo_j = optimo_parcial
-                optimos[j] = optimo_j
+    for i in range(1,n+1):
+        opt_i = 0
+        for k in range(0,i):
+            opt_parcial = opt[k] + min((e[(i-k)],x[(i)]))
+            if opt_parcial > opt_i:
+                opt_i = opt_parcial
+                opt[i] = opt_i
 
-        #print(f"Optimo_j: {optimo_j}")
-    return optimos
+    return opt
 
-def reconstruir_solucion(optimos, n, arribos, valores_recarga):
-    arribos = [0] + arribos
-    valores_recarga = [0] + valores_recarga
-    ataques = [ATACAR]
+def obtener_estrategia_optima_ataque(opt, x, e):
+
+    if len(x) != len(e):
+        raise ListasIncompatiblesError()
+    
+    n = len(x)
+
+    if n == 0:
+        return []
+
+    x = [0] + x
+    e = [0] + e
+    s = [ATACAR]
     tope = n
 
-    for j in range(n,0,-1):
-        if j > tope:
+    for i in range(n,0,-1):
+        if i > tope:
             continue
-        optimo_j = optimos[j]
-        for k in range(j-1,-1,-1):
-            optimo_candidato = optimos[k] + min((valores_recarga[(j-k)],arribos[(j)]))
-            if optimo_candidato == optimo_j:
+        opt_i = opt[i]
+        for k in range(i-1,-1,-1):
+            opt_candidato = opt[k] + min((e[(i-k)],x[(i)]))
+            if opt_candidato == opt_i:
                 if k > 0:
-                    ataques = [ATACAR] + ataques
+                    s = [ATACAR] + s
                 tope = k
                 break
-            ataques = [CARGAR] + ataques
+            s = [CARGAR] + s
 
-    if optimos[-1] != calcular_enemigos_eliminados(arribos[1:], valores_recarga[1:], ataques):
-        raise ValueError("La secuencia generada no coincida con la cantidad de enemigos optima")
+    if opt[-1] != calcular_cantidad_enemigos_eliminados(x[1:], e[1:], s):
+        raise EstrategiaInoptimaError()
 
-    return ataques
+    return s
 
-def calcular_enemigos_eliminados(arribos, valores_recarga, secuencia_acciones):
-    ganancia = 0
+
+def g(x):
+    return 0 if x == CARGAR else 1
+
+def calcular_cantidad_enemigos_eliminados(x, e, s):
+
+    if len(x) != len(e) or len(x) != len(s) or len(e) != len(s):
+        raise ListasIncompatiblesError()
+
+    n = len(x)
+
+    enemigos_eliminados = 0
     energia_acumulada = 0
+    g_estrategia = list(map(g, s))
 
-    for accion, arribo in zip(secuencia_acciones, arribos):
-        if accion == 'Cargar':
+    for i in range(n):
+        if g_estrategia[i] < 1:
             energia_acumulada += 1
-        elif accion == 'Atacar':
-            enemigos_eliminados = min(arribo, valores_recarga[energia_acumulada])
-            ganancia += enemigos_eliminados
+        else:
             energia_acumulada = 0
-
-    return ganancia
+        
+        enemigos_eliminados += g_estrategia[i] * min(x[i], e[energia_acumulada])
+           
+    return enemigos_eliminados  

@@ -20,3 +20,18 @@ CARGAR = 'Cargar'
 ATACAR = 'Atacar'
 
 PATRON = r"(\d+_?\w*\.txt)\nEstrategia: (.+)\nCantidad de tropas eliminadas: (\d+)"
+
+
+MENSAJE_ERROR_LISTAS_INCOMPATIBLES = "Las listas de arribos y valores de recarga deben tener el mismo tamaño"
+class ListasIncompatiblesError(Exception):
+    def __init__(self):
+        self.mensaje = MENSAJE_ERROR_LISTAS_INCOMPATIBLES
+        super().__init__(MENSAJE_ERROR_LISTAS_INCOMPATIBLES)
+
+
+
+MENSAJE_ERROR_ESTRATEGIA_INOPTIMA= "La estrategia generada no coincide con la cantidad optima de enemigos eliminados"
+class EstrategiaInoptimaError(Exception):
+    def __init__(self):
+        self.mensaje = MENSAJE_ERROR_ESTRATEGIA_INOPTIMA
+        super().__init__(MENSAJE_ERROR_ESTRATEGIA_INOPTIMA)
