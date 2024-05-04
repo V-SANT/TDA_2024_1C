@@ -3,7 +3,7 @@ import csv
 import sys
 import re
 from constantes_tp2 import *
-from ataques_optimos import ataques_optimos
+from ataques_optimos import ataques_optimos, reconstruir_solucion
 
 def leer_archivo_prueba(ruta):
     with open(ruta) as file:
@@ -55,9 +55,10 @@ def leer_resultados_esperados(ruta):
 def main():
     ruta_archivo = sys.argv[1]
     n, arribos, valores_recarga = leer_archivo_prueba(ruta_archivo)
-    resultado = ataques_optimos(n, arribos, valores_recarga)
-    print(f"Cantidad de enemigos eliminados: {resultado[0]}")
-    print(f"Estrategia seguida: {resultado[1]}")
+    optimos = ataques_optimos(n, arribos, valores_recarga)
+    solucion = reconstruir_solucion(optimos, n, arribos, valores_recarga)
+    print(f"Cantidad de enemigos eliminados: {optimos[-1]}")
+    print(f"Estrategia seguida: {solucion}")
     
 
 if __name__ == "__main__":

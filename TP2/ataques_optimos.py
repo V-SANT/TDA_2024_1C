@@ -1,10 +1,8 @@
 from constantes_tp2 import *
 
 def ataques_optimos(n, arribos, valores_recarga):
-    
     if n == 0:
         return 0,[]
-    
     
     optimos = [0] * (n+1)
     arribos = [0] + arribos
@@ -22,33 +20,31 @@ def ataques_optimos(n, arribos, valores_recarga):
                 optimos[j] = optimo_j
 
         #print(f"Optimo_j: {optimo_j}")
+    return optimos
 
+def reconstruir_solucion(optimos, n, arribos, valores_recarga):
+    arribos = [0] + arribos
+    valores_recarga = [0] + valores_recarga
     ataques = [ATACAR]
     tope = n
 
     for j in range(n,0,-1):
-
         if j > tope:
             continue
-
         optimo_j = optimos[j]
-
         for k in range(j-1,-1,-1):
-
             optimo_candidato = optimos[k] + min((valores_recarga[(j-k)],arribos[(j)]))
-            
             if optimo_candidato == optimo_j:
                 if k > 0:
                     ataques = [ATACAR] + ataques
                 tope = k
                 break
-            
             ataques = [CARGAR] + ataques
 
     if optimos[-1] != calcular_enemigos_eliminados(arribos[1:], valores_recarga[1:], ataques):
         raise ValueError("La secuencia generada no coincida con la cantidad de enemigos optima")
 
-    return optimos[-1],ataques
+    return ataques
 
 def calcular_enemigos_eliminados(arribos, valores_recarga, secuencia_acciones):
     ganancia = 0
