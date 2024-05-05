@@ -33,40 +33,25 @@ def obtener_estrategia_optima_ataque(opt, x, e):
 
     x = [0] + x
     e = [0] + e
-    s = [ATACAR]
+    s = [CARGAR] * (n+1)
+    s[-1] = ATACAR
     tope = n
 
     for i in range(n,0,-1):
         if i > tope:
             continue
-        opt_i = opt[i]
         for k in range(i-1,-1,-1):
-            opt_candidato = opt[k] + min((e[(i-k)],x[(i)]))
-            if opt_candidato == opt_i:
+            if opt[i] - opt[k] == min((e[(i-k)],x[(i)])):
                 if k > 0:
-                    s = [ATACAR] + s
+                    s[k] = ATACAR
                 tope = k
                 break
-            s = [CARGAR] + s
 
-    if opt[-1] != calcular_cantidad_enemigos_eliminados(x[1:], e[1:], s):
+    if opt[-1] != calcular_cantidad_enemigos_eliminados(x[1:], e[1:], s[1:]):
         raise EstrategiaInoptimaError()
 
-    return s
+    return s[1:]
  
-# def _calcular_cantidad_enemigos_eliminados(x, e, s):
-#     enemigos_acumulados = 0
-#     energia_acumulada = 0
-
-#     for accion, arribo in zip(s, x):
-#         if accion == CARGAR:
-#             energia_acumulada += 1
-#         elif accion == ATACAR:
-#             enemigos_eliminados = min(arribo, e[energia_acumulada])
-#             enemigos_acumulados += enemigos_eliminados
-#             energia_acumulada = 0
-
-#     return enemigos_acumulados
 
 def g(s):
     return 1 if s == ATACAR else 0
