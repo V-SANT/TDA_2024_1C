@@ -53,28 +53,17 @@ def obtener_estrategia_optima_ataque(opt, x, e):
         raise EstrategiaInoptimaError()
 
     return s
-
-
-def g(x):
-    return 0 if x == CARGAR else 1
-
+ 
 def calcular_cantidad_enemigos_eliminados(x, e, s):
-
-    if len(x) != len(e) or len(x) != len(s) or len(e) != len(s):
-        raise ListasIncompatiblesError()
-
-    n = len(x)
-
-    enemigos_eliminados = 0
+    enemigos_acumulados = 0
     energia_acumulada = 0
-    g_estrategia = list(map(g, s))
 
-    for i in range(n):
-        if g_estrategia[i] < 1:
+    for accion, arribo in zip(s, x):
+        if accion == CARGAR:
             energia_acumulada += 1
-        else:
+        elif accion == ATACAR:
+            enemigos_eliminados = min(arribo, e[energia_acumulada])
+            enemigos_acumulados += enemigos_eliminados
             energia_acumulada = 0
-        
-        enemigos_eliminados += g_estrategia[i] * min(x[i], e[energia_acumulada])
-           
-    return enemigos_eliminados  
+
+    return enemigos_acumulados
