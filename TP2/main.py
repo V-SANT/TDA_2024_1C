@@ -5,9 +5,9 @@ from funciones_lectura import leer_archivo_prueba
 
 def main():
     ruta_archivo = sys.argv[1]
-    n, arribos, valores_recarga = leer_archivo_prueba(ruta_archivo)
-    optimos = obtener_valores_optimos_ataque(n, arribos, valores_recarga)
-    solucion = obtener_estrategia_optima_ataque(optimos, n, arribos, valores_recarga)
+    arribos, valores_recarga = leer_archivo_prueba(ruta_archivo)
+    optimos = obtener_valores_optimos_ataque(arribos, valores_recarga)
+    solucion = obtener_estrategia_optima_ataque(optimos, arribos, valores_recarga)
     print(f"Cantidad de enemigos eliminados: {optimos[-1]}")
     print(f"Estrategia seguida: {solucion}")
 
