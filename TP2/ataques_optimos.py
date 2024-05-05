@@ -27,12 +27,13 @@ def obtener_estrategia_optima_ataque(opt, x, e):
         raise ListasIncompatiblesError()
     
     n = len(x)
-
     if n == 0:
         return []
 
     x = [0] + x
     e = [0] + e
+
+    s = []
     s = [CARGAR] * (n+1)
     s[-1] = ATACAR
     tope = n
@@ -40,12 +41,16 @@ def obtener_estrategia_optima_ataque(opt, x, e):
     for i in range(n,0,-1):
         if i > tope:
             continue
-        for k in range(i-1,-1,-1):
-            if opt[i] - opt[k] == min((e[(i-k)],x[(i)])):
-                if k > 0:
-                    s[k] = ATACAR
-                tope = k
-                break
+
+        dif_pos = tope - i
+        dif_opt = opt[tope] - opt[i]
+        e_dif = e[dif_pos]
+
+        if dif_opt <= e_dif:
+            s[i] = ATACAR
+            tope = i
+        else:
+            s[i] = CARGAR
 
     if opt[-1] != calcular_cantidad_enemigos_eliminados(x[1:], e[1:], s[1:]):
         raise EstrategiaInoptimaError()
