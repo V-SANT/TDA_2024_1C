@@ -174,6 +174,12 @@ def test_grupo_8_ataque_nulo():
     assert (valores_optimos[-1] == 0)
     assert (valores_optimos[-1] == calcular_cantidad_enemigos_eliminados(x, e, s))
 
+def test_grupo_11_calcular_cantidad_enemigos_eliminados():
+    x = [5, 10, 15, 20, 25]
+    e = [5, 10, 15, 20, 25]
+    s = [CARGAR, ATACAR, ATACAR, ATACAR, ATACAR]
+    assert (calcular_cantidad_enemigos_eliminados(x, e, s) == 25)
+
 def test_grupo_9_excepcion_listas_incompatibles():
     x = [5, 10, 15, 20, 25]
     e = [5, 10, 15, 20]
@@ -193,5 +199,7 @@ def test_grupo_10_excepcion_estrategia_inoptima():
         assert False
     except EstrategiaInoptimaError:
         assert True
+
+
         
 
