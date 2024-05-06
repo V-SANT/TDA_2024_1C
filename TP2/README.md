@@ -1,4 +1,4 @@
-# TP2
+# TP2: Programación Dinámica para el Reino Tierra
 
 ## Instrucciones para ejecutar
 
@@ -11,7 +11,8 @@ python main.py <<path>>
 ```
 
 ## Tests
-Para correr los tests es necesario contar con `pytest` y luego ejecutar sobre el directorio del proyecto: 
+
+Para correr los tests es necesario contar con `pytest` y luego ejecutar sobre el directorio del proyecto:
 
 ```
 pytest -v
