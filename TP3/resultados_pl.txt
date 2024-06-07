@@ -1,0 +1,112 @@
+Archivo: 5_2.txt
+Execution time: 0.04136967658996582 seconds
+Grupos óptimos
+Grupo 1: [0, 1, 2]
+Grupo 2: [3, 4]
+Coeficiente: 1894340
+
+Archivo: 6_3.txt
+Execution time: 0.10645341873168945 seconds
+Grupos óptimos
+Grupo 1: [1, 5]
+Grupo 2: [0, 4]
+Grupo 3: [2, 3]
+Coeficiente: 1640690
+
+Archivo: 6_4.txt
+Execution time: 0.11809587478637695 seconds
+Grupos óptimos
+Grupo 1: [3]
+Grupo 2: [1, 2, 5]
+Grupo 3: [0]
+Grupo 4: [4]
+Coeficiente: 807418
+
+Archivo: 8_3.txt
+Execution time: 0.13472366333007812 seconds
+Grupos óptimos
+Grupo 1: [0, 2, 4, 5]
+Grupo 2: [1, 3]
+Grupo 3: [6, 7]
+Coeficiente: 4298131
+
+Archivo: 10_3.txt
+Execution time: 0.31261229515075684 seconds
+Grupos óptimos
+Grupo 1: [1, 2, 4, 5]
+Grupo 2: [3, 8, 9]
+Grupo 3: [0, 6, 7]
+Coeficiente: 385249
+
+Archivo: 10_5.txt
+Execution time: 8.901153802871704 seconds
+Grupos óptimos
+Grupo 1: [1, 8]
+Grupo 2: [7, 9]
+Grupo 3: [0, 6]
+Grupo 4: [3, 5]
+Grupo 5: [2, 4]
+Coeficiente: 355882
+
+Archivo: 10_10.txt
+Execution time: 1003.2698359489441 seconds
+Grupos óptimos
+Grupo 1: [4]
+Grupo 2: [2]
+Grupo 3: [5]
+Grupo 4: [7]
+Grupo 5: [0]
+Grupo 6: [8]
+Grupo 7: [3]
+Grupo 8: [9]
+Grupo 9: [6]
+Grupo 10: [1]
+Coeficiente: 172295
+
+Archivo: 11_5.txt
+Execution time: 1.4578945636749268 seconds
+Grupos óptimos
+Grupo 1: [0, 1, 7, 8]
+Grupo 2: [4, 10]
+Grupo 3: [2, 3, 5]
+Grupo 4: [6]
+Grupo 5: [9]
+Coeficiente: 2906564
+
+Archivo: 14_3.txt
+Execution time: 4.408166408538818 seconds
+Grupos óptimos
+Grupo 1: [1, 2, 5, 8, 12]
+Grupo 2: [0, 3, 6, 7, 13]
+Grupo 3: [4, 9, 10, 11]
+Coeficiente: 15659106
+
+Archivo: 14_4.txt
+Execution time: 9.463868856430054 seconds
+Grupos óptimos
+Grupo 1: [6, 9, 10]
+Grupo 2: [1, 4, 5]
+Grupo 3: [0, 11, 13]
+Grupo 4: [2, 3, 7, 8, 12]
+Coeficiente: 15292055
+
+Archivo: 14_6.txt
+Execution time: 288.15919637680054 seconds
+Grupos óptimos
+Grupo 1: [1, 5]
+Grupo 2: [10, 11]
+Grupo 3: [7, 9]
+Grupo 4: [3, 6, 12, 13]
+Grupo 5: [2, 4]
+Grupo 6: [0, 8]
+Coeficiente: 10694510
+
+Archivo: 15_4.txt
+Execution time: 17.36568284034729 seconds
+Grupos óptimos
+Grupo 1: [1, 3, 7, 10]
+Grupo 2: [2, 9, 11, 14]
+Grupo 3: [4, 5, 8]
+Grupo 4: [0, 6, 12, 13]
+Coeficiente: 4311889
+
