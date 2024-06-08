@@ -101,13 +101,13 @@ def main():
 
         # Escribir los resultados en un archivo
         
-        '''with open('resultados_bt.txt', 'a') as f:
+        with open('resultados_bt.txt', 'a') as f:
             f.write(f"Archivo: {filename}\n")
             f.write(f"Execution time: {execution_time} seconds\n")
             f.write("Grupos óptimos\n")
             for index, grupo in enumerate(grupos):
                 f.write(f"Grupo {index+1}: {grupo}\n")
-            f.write(f"Coeficiente: {coeficiente}\n\n") '''
+            f.write(f"Coeficiente: {coeficiente}\n\n")
 
 if __name__ == "__main__":
     main()
