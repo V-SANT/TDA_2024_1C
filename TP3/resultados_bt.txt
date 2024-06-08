@@ -1,10 +1,9 @@
-5_2.txt
-Execution time: 9.679794311523438e-05 seconds
+Archivo: 5_2.txt
+Tiempo de ejecucion: 8.893013000488281e-05 seconds
 Grupos óptimos
-Grupo 1: ['Yakone', 'Yue', 'Pakku']
-Grupo 2: ['Wei', 'Pakku I']
+Grupo 1 : ['Yakone', 'Yue', 'Pakku']
+Grupo 2 : ['Wei', 'Pakku I']
 Coeficiente: 1894340
-
 
 Archivo: 6_3.txt
 Execution time: 0.0008387565612792969 seconds
@@ -122,3 +121,33 @@ Grupo 5: ['La', 'Ming-Hua', 'Sura']
 Grupo 6: ['Huu', 'Tonraq', 'Wei']
 Coeficiente: 6377225
 
+Archivo: 17_5.txt
+Tiempo de ejecucion: 5156.498935461044 seconds
+Grupos óptimos
+Grupo 1 : ['Sangok I', 'Misu I', 'Rafa']
+Grupo 2 : ['Yakone I', 'Yakone', 'Tho']
+Grupo 3 : ['Sangok', 'Huu', 'Ming-Hua', 'Misu']
+Grupo 4 : ['Senna I', 'Amon I', 'Senna']
+Grupo 5 : ['Wei', 'Unalaq', 'Amon', 'Hama']
+Coeficiente: 15974095
+
+Archivo: 17_7.txt
+Execution time: 9536.10837650299 seconds
+Grupos óptimos
+Grupo 1: ['Pakku II', 'Hasook I', 'Pakku']
+Grupo 2: ['Rafa', 'Wei I']
+Grupo 3: ['Hama', 'Eska', 'Desna', 'Hasook']
+Grupo 4: ['Wei', 'La']
+Grupo 5: ['Unalaq', 'Tonraq']
+Grupo 6: ['Pakku I', 'Yue']
+Grupo 7: ['Siku', 'Sangok']
+Coeficiente: 11513230
+
+Archivo: 20_4.txt
+Execution time: 22393.61390018463 seconds
+Grupos óptimos
+Grupo 1: ['Sura I', 'Tho', 'Sura', 'Sangok I']
+Grupo 2: ['Siku I', 'Wei', 'Ming-Hua', 'Sangok II']
+Grupo 3: ['Sangok', 'Yue', 'Tonraq I', 'Hama', 'Katara', 'Hasook']
+Grupo 4: ['Rafa', 'Tonraq', 'Tho I', 'Siku', 'Kya', 'Wei I']
+Coeficiente: 21081875

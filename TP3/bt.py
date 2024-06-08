@@ -5,7 +5,7 @@ import time
 def calcular_coeficiente(sumas):
     return sum(suma**2 for suma in sumas)
 
-def buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index, mejor_solucion, minima_diferencia):
+def buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index, mejor_solucion):
     # Hasta que no hayamos ubicado el último maestro no es una solución final
     if index == len(maestros):
         coeficiente_actual = calcular_coeficiente(sumas)
@@ -14,8 +14,6 @@ def buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index, mejor_
             mejor_solucion[0] = coeficiente_actual
             # Pongo como quedaría mi mejor solución
             mejor_solucion[1] = [list(grupo) for grupo in grupos]
-            # Actualizo la minima diferencia
-            minima_diferencia = max(sumas) - min(sumas)
         # Siempre voy a querer retornear para que se sigan calculando las otras opciones
         return
 
@@ -37,8 +35,8 @@ def buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index, mejor_
         sumas[i] += habilidad
         
         # Si el coeficiente de mis grupos todavia puede ser una opcion (es menor a mi mejor solución) sigo armando esta solución
-        if calcular_coeficiente(sumas) < mejor_solucion[0] and max(sumas)-min(sumas) - sum(habilidades[index+1:]) < minima_diferencia:
-            buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index + 1, mejor_solucion, minima_diferencia)
+        if calcular_coeficiente(sumas) < mejor_solucion[0]:
+            buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index + 1, mejor_solucion)
 
         # Acá llego en 2 casos:
         # 1. Ya no puedo seguir armando esta solución porque ya no me conviene
@@ -61,7 +59,7 @@ def inicializacion(maestros, habilidades, k):
     grupos = [[] for _ in range(k)]    
     # Almacenamos la suma de los grupos para no volver a recularlas
     sumas = [0] * k
-    buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, 0, mejor_solucion, float('inf'))
+    buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, 0, mejor_solucion)
     return mejor_solucion[1], mejor_solucion[0]
 
 def leer_archivos(archivo):
@@ -81,7 +79,7 @@ def leer_archivos(archivo):
 def main():
     for filename in reversed(os.listdir(CARPETA)):
         # Esto esta para probar archivos en particular
-        if filename != "15_6.txt":
+        if filename != "10_10.txt":
             continue
         print("Archivo:", filename)
 
@@ -103,13 +101,13 @@ def main():
 
         # Escribir los resultados en un archivo
         
-        with open('resultados_bt.txt', 'a') as f:
+        '''with open('resultados_bt.txt', 'a') as f:
             f.write(f"Archivo: {filename}\n")
             f.write(f"Execution time: {execution_time} seconds\n")
             f.write("Grupos óptimos\n")
             for index, grupo in enumerate(grupos):
                 f.write(f"Grupo {index+1}: {grupo}\n")
-            f.write(f"Coeficiente: {coeficiente}\n\n")
+            f.write(f"Coeficiente: {coeficiente}\n\n") '''
 
 if __name__ == "__main__":
     main()
