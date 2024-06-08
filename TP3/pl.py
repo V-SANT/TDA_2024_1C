@@ -84,7 +84,7 @@ def leer_archivos(archivo):
 def main():
     for filename in reversed(os.listdir(CARPETA)):
         # Esto esta para probar archivos en particular
-        if filename != "15_4.txt":
+        if filename != "17_7.txt":
             continue
         print("Archivo:", filename)
 

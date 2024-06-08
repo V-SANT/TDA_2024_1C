@@ -110,3 +110,37 @@ Grupo 3: [4, 5, 8]
 Grupo 4: [0, 6, 12, 13]
 Coeficiente: 4311889
 
+Archivo: 15_6.txt
+Execution time: 585.0734117031097 seconds
+Grupos óptimos
+Grupo 1: [5, 9]
+Grupo 2: [1, 6, 8, 13]
+Grupo 3: [0, 14]
+Grupo 4: [2, 4]
+Grupo 5: [3, 7, 12]
+Grupo 6: [10, 11]
+Coeficiente: 6378149
+
+Archivo: 17_5.txt
+Execution time: 8836.34470963478 seconds
+Grupos óptimos
+Grupo 1: [5, 9, 10]
+Grupo 2: [4, 11, 15]
+Grupo 3: [0, 1, 8, 16]
+Grupo 4: [2, 7, 12, 13]
+Grupo 5: [3, 6, 14]
+Coeficiente: 15974095
+
+Archivo: 17_7.txt
+Execution time: 16902.914131879807 seconds
+Grupos óptimos
+Grupo 1: [1, 3]
+Grupo 2: [4, 15]
+Grupo 3: [0, 8, 10, 11]
+Grupo 4: [12, 13]
+Grupo 5: [2, 5, 16]
+Grupo 6: [7, 9]
+Grupo 7: [6, 14]
+Coeficiente: 11515918
+
+
