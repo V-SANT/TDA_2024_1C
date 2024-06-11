@@ -144,3 +144,19 @@ Grupo 7: [6, 14]
 Coeficiente: 11515918
 
 
+Archivo: 14_3.txt
+Execution time: 2.292616128921509 seconds
+Grupos óptimos
+Grupo 1: [1, 2, 5, 8, 12]
+Grupo 2: [0, 3, 6, 7, 13]
+Grupo 3: [4, 9, 10, 11]
+Coeficiente: 15659106
+
+Archivo: 10_3.txt
+Execution time: 0.3947768211364746 seconds
+Grupos óptimos
+Grupo 1: [1, 2, 4, 5]
+Grupo 2: [3, 8, 9]
+Grupo 3: [0, 6, 7]
+Coeficiente: 385249
+

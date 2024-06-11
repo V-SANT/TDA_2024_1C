@@ -1,0 +1,6 @@
+# Ignorar archivos específicos
+resultados_bt.txt
+resultados_pl.txt
+
+# Ignorar el directorio __pycache__ y su contenido
+__pycache__/
