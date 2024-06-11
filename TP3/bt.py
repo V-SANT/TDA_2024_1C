@@ -5,6 +5,14 @@ import time
 def calcular_coeficiente(sumas):
     return sum(suma**2 for suma in sumas)
 
+def indices_ordenados_por_valor(arreglo):
+    tuplas_indice_valor = list(enumerate(arreglo))
+    # Ordenar las tuplas por valor 
+    tuplas_ordenadas = sorted(tuplas_indice_valor, key=lambda x: x[1])
+    # Extraer solo los índices
+    indices_ordenados = [tupla[0] for tupla in tuplas_ordenadas]
+    return indices_ordenados
+
 def buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index, mejor_solucion):
     # Hasta que no hayamos ubicado el último maestro no es una solución final
     if index == len(maestros):
@@ -17,26 +25,30 @@ def buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index, mejor_
         # Siempre voy a querer retornear para que se sigan calculando las otras opciones
         return
 
-    for i in range(k):
-        # REVISAR! 
-        # De esta forma yo evito calcular combinaciones duplicadas
-        # Es lo mismo probar [1,2] [3] que [3] [1,2]
-        # Una vez que probe todas las combinaciones da igual las permutaciones que haya entre grupos
+    # Asignamos al grupo con menor habilidad acumulada
+    for i in indices_ordenados_por_valor(sumas):
         if index == 0 and i >= 1:
             break
+        
+        # Evitar combinaciones redundantes explorando solo un subconjunto si las sumas son iguales
+        if index > 0 and any(sumas[i] == sumas[j] for j in range(i)):
+            continue
+
         # Me quedo con un maestro de mi lista de maestros
         maestro = maestros[index]
         habilidad = habilidades[index]
-
-        #Lo sumo en el grupo que estoy analizando
-        grupos[i].append(maestro)
 
         # Sumo la habilidad del maestro al grupo que estoy analizando
         sumas[i] += habilidad
         
         # Si el coeficiente de mis grupos todavia puede ser una opcion (es menor a mi mejor solución) sigo armando esta solución
         if calcular_coeficiente(sumas) < mejor_solucion[0]:
+            # Lo sumo en el grupo que estoy analizando
+            grupos[i].append(maestro)
+            # Llamo recursivamente
             buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index + 1, mejor_solucion)
+            # El maestro que acabo de poner en el grupo i lo saco 
+            grupos[i].pop()
 
         # Acá llego en 2 casos:
         # 1. Ya no puedo seguir armando esta solución porque ya no me conviene
@@ -44,8 +56,6 @@ def buscar_mejor_solucion(maestros, habilidades, k, grupos, sumas, index, mejor_
         
         # La suma del grupo i le resto el maestro que acabo de sacar
         sumas[i] -= habilidad
-        # El maestro que acabo de poner en el grupo i lo saco 
-        grupos[i].pop()
         # En la proxima iteración si hay otro grupo disponible voy a poner el maestro en ese grupo
 
 def inicializacion(maestros, habilidades, k):
@@ -79,7 +89,7 @@ def leer_archivos(archivo):
 def main():
     for filename in reversed(os.listdir(CARPETA)):
         # Esto esta para probar archivos en particular
-        if filename != "10_10.txt":
+        if filename != "17_7.txt":
             continue
         print("Archivo:", filename)
 
@@ -101,13 +111,13 @@ def main():
 
         # Escribir los resultados en un archivo
         
-        with open('resultados_bt.txt', 'a') as f:
+        '''with open('resultados_bt.txt', 'a') as f:
             f.write(f"Archivo: {filename}\n")
             f.write(f"Execution time: {execution_time} seconds\n")
             f.write("Grupos óptimos\n")
             for index, grupo in enumerate(grupos):
                 f.write(f"Grupo {index+1}: {grupo}\n")
-            f.write(f"Coeficiente: {coeficiente}\n\n")
+            f.write(f"Coeficiente: {coeficiente}\n\n")'''
 
 if __name__ == "__main__":
     main()
