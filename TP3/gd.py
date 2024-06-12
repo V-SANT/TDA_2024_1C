@@ -1,4 +1,3 @@
-
 def insertar_ordenado(grupos, grupo_minimo):
     grupos_aux = []
     encontrado = False
@@ -13,8 +12,6 @@ def insertar_ordenado(grupos, grupo_minimo):
         grupos_aux.append(grupo_minimo)
 
     return grupos_aux
-
-
 
 def p_opt_tribu_agua_gd(maestros, habilidades, k):
     tuplas_maestros = list(zip(maestros, habilidades))

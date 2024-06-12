@@ -13,7 +13,7 @@ def main(filename, metodo, guardar):
     
     start_time = time.time()
     
-    if metodo == PROGRAMACON_LINEAL:
+    if metodo == PROGRAMACION_LINEAL:
         grupos, coeficiente = pl.p_opt_tribu_agua_pl(maestros, habilidades, k)
     elif metodo == BACKTRACKING:
         grupos, coeficiente = bt.p_opt_tribu_agua_bt(maestros, habilidades, k)
