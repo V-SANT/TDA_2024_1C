@@ -1,6 +1,7 @@
 CARPETA = "archivos_pruebas"
 PROGRAMACON_LINEAL = "pl"
 BACKTRACKING = "bt"
+GREEDY = "gd"
 
 #ARCHIVOS_PRUEBAS
 
@@ -13,3 +14,8 @@ PRUEBA_6 = "10_10.txt"
 PRUEBA_7 = "11_5.txt"
 PRUEBA_8 = "14_3.txt"
 PRUEBA_9 = "14_6.txt"
+
+PRUEBA_10 = "10_5.txt"
+PRUEBA_11 = "14_4.txt"
+PRUEBA_12 = "15_4.txt"
+PRUEBA_13 = "15_6.txt"
