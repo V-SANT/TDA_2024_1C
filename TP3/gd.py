@@ -1,20 +1,10 @@
+import bisect 
 
 def insertar_ordenado(grupos, grupo_minimo):
-    def valor_cuadrado(grupo):
-        return grupo[1]**2
-    
-    def busqueda_binaria(grupos, grupo_minimo):
-        valor_minimo = valor_cuadrado(grupo_minimo)
-        izquierda, derecha = 0, len(grupos)
-        while izquierda < derecha:
-            medio = (izquierda + derecha) // 2
-            if valor_cuadrado(grupos[medio]) < valor_minimo:
-                izquierda = medio + 1
-            else:
-                derecha = medio
-        return izquierda
-    
-    posicion = busqueda_binaria(grupos, grupo_minimo)
+    valores = [grupo[1]**2 for grupo in grupos]
+    valor_minimo = grupo_minimo[1]**2
+
+    posicion = bisect.bisect_left(valores, valor_minimo)
     grupos.insert(posicion, grupo_minimo)
     
     return grupos
