@@ -74,7 +74,7 @@ Grupo 5: [9]
 Coeficiente: 2906564
 
 Archivo: 14_3.txt
-Execution time: 4.408166408538818 seconds
+Execution time: 2.292616128921509 seconds
 Grupos óptimos
 Grupo 1: [1, 2, 5, 8, 12]
 Grupo 2: [0, 3, 6, 7, 13]
@@ -143,20 +143,22 @@ Grupo 6: [7, 9]
 Grupo 7: [6, 14]
 Coeficiente: 11515918
 
-
-Archivo: 14_3.txt
-Execution time: 2.292616128921509 seconds
+Archivo: 18_6.txt
+Tiempo de ejecucion: 37774.26906299591 seconds
 Grupos óptimos
-Grupo 1: [1, 2, 5, 8, 12]
-Grupo 2: [0, 3, 6, 7, 13]
-Grupo 3: [4, 9, 10, 11]
-Coeficiente: 15659106
+Grupo 1 : ['Yue I', 'Yakone']
+Grupo 2 : ['Amon', 'Senna', 'Misu', 'Pakku']
+Grupo 3 : ['Kya I', 'Hama', 'Yue', 'Kuruk I']
+Grupo 4 : ['Huu', 'Kuruk', 'Yue II']
+Grupo 5 : ['Tho', 'Hama I', 'Sangok']
+Grupo 6 : ['Kya', 'Misu I']
+Coeficiente: 10322822
 
-Archivo: 10_3.txt
-Execution time: 0.3947768211364746 seconds
+Archivo: 20_4.txt
+Execution time: 41731.87626719475 seconds
 Grupos óptimos
-Grupo 1: [1, 2, 4, 5]
-Grupo 2: [3, 8, 9]
-Grupo 3: [0, 6, 7]
-Coeficiente: 385249
-
+Grupo 1: [5, 9, 11, 17, 19]
+Grupo 2: [1, 2, 10, 15, 16]
+Grupo 3: [3, 7, 8, 12, 13, 18]
+Grupo 4: [0, 4, 6, 14]
+Coeficiente: 21081875
