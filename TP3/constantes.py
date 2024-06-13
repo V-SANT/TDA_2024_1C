@@ -2,6 +2,7 @@ CARPETA = "archivos_pruebas"
 PROGRAMACION_LINEAL = "pl"
 BACKTRACKING = "bt"
 GREEDY = "gd"
+GREEDY_2 = "gd_2"
 
 #ARCHIVOS_PRUEBAS
 
