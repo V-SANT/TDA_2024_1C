@@ -9,8 +9,6 @@ def insertar_ordenado(grupos, grupo_minimo):
     
     return grupos
 
-
-
 def p_opt_tribu_agua_gd(maestros, habilidades, k):
     tuplas_maestros = list(zip(maestros, habilidades)) 
     maestros_ordenados = sorted(tuplas_maestros, key=lambda x: x[1], reverse=True)

@@ -11,12 +11,12 @@ def p_opt_tribu_agua_gd2(maestros, habilidades, k):
 
     for maestro in maestros_ordenados:
         indice_grupo = indice_grupo % k
-        if suma_grupos[indice_grupo] > habilidades_optimo:
+        while suma_grupos[indice_grupo] > habilidades_optimo:
             indice_grupo += 1
         grupos[indice_grupo].append(maestro[0])
         suma_grupos[indice_grupo] += maestro[1]
         indice_grupo += 1
 
     coeficiente = sum(x**2 for x in suma_grupos)
-
+    
     return grupos, coeficiente
